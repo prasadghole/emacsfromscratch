@@ -119,3 +119,24 @@
   :diminish which-key-mode
   :config
   (which-key-mode))
+
+;;ORG ROAM our main work horse
+
+(use-package emacsql
+  :defer nil)
+(use-package emacsql-sqlite
+  :after emacsql
+  :defer nil)
+
+(use-package org-roam
+  :after (org emacsql emacsql-sqlite)
+  :load-path "lisp/org-roam"
+  :diminish
+  :hook
+  ((org-mode . org-roam-mode)
+   (after-init . org-roam--build-cache-async))
+  :custom
+  (org-roam-directory "d:/Prasad/roam")
+  :bind
+  ("C-c n l" . org-roam)
+  )
