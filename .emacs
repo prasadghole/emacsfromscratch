@@ -4,6 +4,7 @@
 (line-number-mode +1)
 (global-display-line-numbers-mode +1)
 
+
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -60,14 +61,6 @@
   (evil-mode 1)
   )
 
-(use-package org
-  :ensure t
-  :init
-  (setq org-directory "~/org")
-  :config
-  (setq org-startup-indented t)
-  (setq org-src-fontify-natively t)
-  )
 
 (use-package diff-hl
   :config
@@ -92,3 +85,37 @@
   (setq magit-push-always-verify nil)
   (setq git-commit-symmary-max-length 50)
   )
+
+(use-package smooth-scrolling
+  :config
+  (smooth-scrolling-mode 1)
+  )
+
+
+(use-package org
+  :ensure t
+  :init
+  (setq org-directory "~/org")
+  :config
+  (setq org-startup-indented t)
+  (setq org-src-fontify-natively t)
+  )
+(use-package org-indent
+  :ensure nil
+  :diminish
+  :custom
+  (org-indent-indentation-per-level 4)
+  (org-log-into-drawer t)
+  )
+
+(use-package org-bullets :ensure t)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(setq org-hide-leading-stars t)
+
+(setq org-use-speed-commands t)
+
+(use-package which-key
+  :defer nil
+  :diminish which-key-mode
+  :config
+  (which-key-mode))
