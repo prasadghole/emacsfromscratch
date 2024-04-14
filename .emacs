@@ -27,28 +27,8 @@
 ;;escape menu 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
-(use-package company)
-(add-hook 'after-init-hook 'global-company-mode)
 ;; Highlight current line.
 (global-hl-line-mode t)
-
-
-(use-package counsel
-  :config
-  (counsel-mode 1)) ;;Enable to use counsel keybinding overried emacs
-
-
-(use-package ivy
-  :bind 
-  :config
-  (ivy-mode 1)
-  (setq ivy-initial-inputs-alist nil)
-  )
-
-(use-package ivy-rich
-  :init
-  (ivy-rich-mode 1))
-
 
 ;; Do not use `init.el` for `custom-*` code - use `custom-file.el`.
 (setq custom-file "~/.emacs.d/custom-file.el")
@@ -67,6 +47,9 @@
              '("melpa" . "http://melpa.org/packages/") t)
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
+
+(use-package company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 (use-package auto-compile
   :config (auto-compile-on-load-mode))
@@ -92,6 +75,24 @@
   :ensure t
   :config
   (load-theme 'dracula t))
+
+
+
+(use-package counsel
+  :config
+  (counsel-mode 1)) ;;Enable to use counsel keybinding overried emacs
+
+
+(use-package ivy
+  :bind 
+  :config
+  (ivy-mode 1)
+  (setq ivy-initial-inputs-alist nil)
+  )
+
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
 
 ;; (use-package spacemacs-theme
 ;;   :ensure t
@@ -142,7 +143,13 @@
   (smooth-scrolling-mode 1)
   )
 
+(use-package which-key
+  :defer nil
+  :diminish which-key-mode
+  :config
+  (which-key-mode))
 
+;;Org package starts from here
 (use-package org
   :ensure t
   :init
@@ -165,11 +172,7 @@
 
 (setq org-use-speed-commands t)
 
-(use-package which-key
-  :defer nil
-  :diminish which-key-mode
-  :config
-  (which-key-mode))
+
 
 (use-package emacsql
   :defer nil)
