@@ -149,6 +149,28 @@
   :config
   (which-key-mode))
 
+(use-package ibuffer
+  :ensure t
+  :bind (:map ibuffer-mode-map
+              ("j" . evil-next-line)
+              ("k" . evil-previous-line)
+              ("J" . ibuffer-forward-line)
+              ("K" . ibuffer-backward-line)
+              ("/" . evil-search-forward)
+              ("?" . evil-search-backward))
+  :config
+  ;; Customize ibuffer's appearance and behavior here
+  )
+
+
+(use-package perspective
+  :bind
+  ("C-x C-p" . persp-list-buffers)         ; or use a nicer switcher, see below
+  :custom
+  (persp-mode-prefix-key (kbd "C-c M-p"))  ; pick your own prefix key here
+  :init
+  (persp-mode))
+
 ;;Org package starts from here
 (use-package org
   :ensure t
