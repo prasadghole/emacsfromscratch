@@ -24,14 +24,27 @@
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
+;;escape menu 
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (use-package company)
 (add-hook 'after-init-hook 'global-company-mode)
 ;; Highlight current line.
 (global-hl-line-mode t)
 
-;; Use `command` as `meta` in macOS.
-(setq mac-command-modifier 'meta)
+
+(use-package counsel
+  :config
+  (counsel-mode 1)) ;;Enable to use counsel keybinding overried emacs
+
+
+(use-package ivy
+  :bind 
+  :config
+  (ivy-mode 1)
+  (setq ivy-initial-inputs-alist nil)
+  )
+
 
 ;; Do not use `init.el` for `custom-*` code - use `custom-file.el`.
 (setq custom-file "~/.emacs.d/custom-file.el")
