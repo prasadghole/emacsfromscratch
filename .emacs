@@ -2,6 +2,9 @@
 (setq inhibit-startup-message t)
 (tool-bar-mode -1)
 (recentf-mode 1)
+
+;; Stop creating lots of backup files
+(setq backup-inhibited t)
 ;;Remember command history
 (setq history-length 25)
 (savehist-mode 1)
@@ -11,6 +14,7 @@
 
 ;;Auto revert to changed file outside of emacs
 (global-auto-revert-mode 1)
+(setq global-auto-revert-non-file-buffers t)
 
 (line-number-mode +1)
 (global-display-line-numbers-mode +1)
@@ -50,6 +54,22 @@
 (use-package auto-compile
   :config (auto-compile-on-load-mode))
    (setq load-prefer-newer t);; Additional packages and their configurations
+
+(use-package all-the-icons
+  :if (display-graphic-p))
+
+(use-package nerd-icons
+  :ensure t
+  ;; :custom
+  ;; The Nerd Font you want to use in GUI
+  ;; "Symbols Nerd Font Mono" is the default and is recommended
+  ;; but you can use any other Nerd Font if you want
+  ;; (nerd-icons-font-family "Symbols Nerd Font Mono")
+  )
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
+
 
 (use-package dracula-theme
   :ensure t
