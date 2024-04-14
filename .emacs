@@ -51,19 +51,22 @@
   :config (auto-compile-on-load-mode))
    (setq load-prefer-newer t);; Additional packages and their configurations
 
-(use-package spacemacs-theme
+(use-package dracula-theme
   :ensure t
   :config
-  ;; Do not use a different background color for comments.
-  (setq spacemacs-theme-comment-bg nil)
+  (load-theme 'dracula t))
 
-  ;; Comments should appear in italics.
-  (setq spacemacs-theme-comment-italic t)
+;; (use-package spacemacs-theme
+;;   :ensure t
+;;   :config
+;;   ;; Do not use a different background color for comments.
+;;   (setq spacemacs-theme-comment-bg nil)
 
-  ;; Use the `spacemacs-dark` theme.
-  (load-theme 'spacemacs-dark))
+;;   ;; Comments should appear in italics.
+;;   (setq spacemacs-theme-comment-italic t)
 
-
+;;   ;; Use the `spacemacs-dark` theme.
+;;   (load-theme 'spacemacs-dark))
 
 
 (use-package evil
