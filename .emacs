@@ -45,6 +45,10 @@
   (setq ivy-initial-inputs-alist nil)
   )
 
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
+
 
 ;; Do not use `init.el` for `custom-*` code - use `custom-file.el`.
 (setq custom-file "~/.emacs.d/custom-file.el")
