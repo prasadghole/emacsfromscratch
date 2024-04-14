@@ -1,6 +1,17 @@
 ;; Do not show the startup screen.
 (setq inhibit-startup-message t)
-(setq org-ellipsis "⤵")
+(tool-bar-mode -1)
+(recentf-mode 1)
+;;Remember command history
+(setq history-length 25)
+(savehist-mode 1)
+
+;;last visited file position
+(save-place-mode 1)
+
+;;Auto revert to changed file outside of emacs
+(global-auto-revert-mode 1)
+
 (line-number-mode +1)
 (global-display-line-numbers-mode +1)
 
@@ -120,8 +131,6 @@
   :config
   (which-key-mode))
 
-;;ORG ROAM our main work horse
-
 (use-package emacsql
   :defer nil)
 (use-package emacsql-sqlite
@@ -129,14 +138,11 @@
   :defer nil)
 
 (use-package org-roam
-  :after (org emacsql emacsql-sqlite)
-  :load-path "lisp/org-roam"
-  :diminish
-  :hook
-  ((org-mode . org-roam-mode)
-   (after-init . org-roam--build-cache-async))
+  :ensure t
   :custom
-  (org-roam-directory "d:/Prasad/roam")
-  :bind
-  ("C-c n l" . org-roam)
-  )
+  (org-roam-directory "d:/Prasad/WinRoam")
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert))
+  :config
+  (org-roam-setup))
