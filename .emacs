@@ -26,6 +26,7 @@
 (set-keyboard-coding-system 'utf-8)
 ;;escape menu 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
 ;; Highlight current line.
 (global-hl-line-mode t)
@@ -48,7 +49,10 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
-(use-package company)
+(use-package company
+  :config
+  (setq company-idle-delay 0))
+
 (add-hook 'after-init-hook 'global-company-mode)
 
 (use-package auto-compile
@@ -75,8 +79,6 @@
   :ensure t
   :config
   (load-theme 'dracula t))
-
-
 
 (use-package counsel
   :config
@@ -151,6 +153,7 @@
 
 (use-package ibuffer
   :ensure t
+  :bind ("C-x C-b" . ibuffer)
   :bind (:map ibuffer-mode-map
               ("j" . evil-next-line)
               ("k" . evil-previous-line)
@@ -161,6 +164,7 @@
   :config
   ;; Customize ibuffer's appearance and behavior here
   )
+
 
 
 (use-package perspective
