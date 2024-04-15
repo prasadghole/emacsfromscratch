@@ -233,3 +233,7 @@
          ("C-c n i" . org-roam-node-insert))
   :config
   (org-roam-setup))
+
+(use-package ox-pandoc)
+
+(use-package ox-reveal)
