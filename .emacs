@@ -198,7 +198,10 @@
 
 (setq org-use-speed-commands t)
 
-
+(use-package flyspell
+  :config
+  (setq ispell-program-name "hunspell")
+  )
 
 (use-package emacsql
   :defer nil)
@@ -209,7 +212,7 @@
 (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory "d:/Prasad/WinRoam")
+  (org-roam-directory "d:/Prasad/roam")
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert))
