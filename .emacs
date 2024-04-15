@@ -20,6 +20,7 @@
 (global-display-line-numbers-mode +1)
 
 
+
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -28,6 +29,8 @@
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 
+;;helm keybinding
+(global-set-key (kbd "M-x") 'helm-M-x)
 ;; Highlight current line.
 (global-hl-line-mode t)
 
@@ -85,16 +88,24 @@
   (counsel-mode 1)) ;;Enable to use counsel keybinding overried emacs
 
 
-(use-package ivy
-  :bind 
+(use-package helm
+  :bind
+  ("C-x C-f" . 'helm-find-files)
+  ("C-x C-b" . 'helm-buffer-list)
   :config
-  (ivy-mode 1)
-  (setq ivy-initial-inputs-alist nil)
-  )
+  (require 'helm-autoloads)
+  (helm-mode 1))
 
-(use-package ivy-rich
-  :init
-  (ivy-rich-mode 1))
+;; (use-package ivy
+;;   :bind 
+;;   :config
+;;   (ivy-mode 1)
+;;   (setq ivy-initial-inputs-alist nil)
+;;   )
+
+;; (use-package ivy-rich
+;;   :init
+;;   (ivy-rich-mode 1))
 
 ;; (use-package spacemacs-theme
 ;;   :ensure t
@@ -203,6 +214,10 @@
   (setq ispell-program-name "hunspell")
   )
 
+(use-package company-prescient
+  :after company
+  :config
+  (company-prescient-mode 1))
 (use-package emacsql
   :defer nil)
 (use-package emacsql-sqlite
