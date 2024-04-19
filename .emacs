@@ -237,3 +237,12 @@
 (use-package ox-pandoc)
 
 (use-package ox-reveal)
+
+(use-package org-download
+  :ensure t
+  :config
+  (org-download-enable))
+
+(use-package mermaid-mode
+  :ensure t
+  :mode ("\\.mmd\\'" . mermaid-mode))
