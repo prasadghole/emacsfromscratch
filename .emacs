@@ -194,6 +194,7 @@
   :config
   (setq org-startup-indented t)
   (setq org-src-fontify-natively t)
+  (setq org-confirm-babel-evaluate nil)
   )
 (use-package org-indent
   :ensure nil
@@ -241,8 +242,24 @@
 (use-package org-download
   :ensure t
   :config
+  (setq org-download-method 'directory)
+  (setq org-download-image-dir  "d:/Prasad/roam/images")
   (org-download-enable))
 
 (use-package mermaid-mode
   :ensure t
   :mode ("\\.mmd\\'" . mermaid-mode))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((latex . t)))
+
+(use-package ob-async)
+
+;;ysnippet
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
+
+(use-package yasnippet-snippets)
+
